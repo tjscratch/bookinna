@@ -1,0 +1,139 @@
+#searchForm{
+  display: flex;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+
+  Input{
+    height: 48px;
+    font-size: 16px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+}
+.form-control{
+  border: none;
+  border-radius: 0;
+}
+.search-loacation{
+  flex-basis: 27%;
+  margin-left: 2px;
+  margin-bottom: 2px;
+}
+//.input-field {
+//  background: #FFFFFF;
+//}
+.search-loacation:first-child{
+  input {
+    border-radius: 4px 0 0 4px;
+  }
+}
+.search-loacation:nth-child(2){
+  input {
+    background: no-repeat 92% center #ffffff;
+  }
+}
+.date-check{
+  flex-basis: 19%;
+  border: 0;
+  margin-left: 2px;
+  min-width: 215px;
+  margin-bottom: 2px;
+}
+.icon-calendar {
+  background: url(../../assets/icon-calendar.svg) no-repeat 95% 40% #ffffff;
+  cursor: pointer;
+}
+.flight-terms {
+  flex-basis: 15%;
+  min-width: 185px;
+  margin-left: 2px;
+  height: 48px;
+  margin-bottom: 2px;
+  input{
+    cursor: pointer;
+    background: url(../../assets/icon-arrow.svg) no-repeat 92% center #ffffff;
+  }
+}
+#start-search{
+  border-radius: 0 3px 3px 0;
+  flex-basis: 10%;
+  height: 48px;
+  margin-left: 2px;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+.search-autocomplete,.people-counter {
+  cursor: pointer;
+  //width: 340px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #fff;
+  display: block;
+  border: 1px solid #ccc;
+  overflow: auto;
+  max-height: 360px;
+  position: absolute;
+  z-index: 50;
+  font-size: 16px;
+  //letter-spacing: -.025em;
+  margin-top: 1px;
+  padding: 5px;
+  box-shadow: 0 5px 10px rgba(50,50,50,.25);
+  li{
+    padding: 5px;
+  }
+  li:hover{
+    background: darken(#FFF, 7);
+  }
+  .country-grey{
+    color: #878787;
+    font-weight: 400;
+  }
+  .code-iata{
+    float: right;
+    margin-left: 2rem;
+  }
+}
+.people-counter{
+  display: flex;
+  width: 185px;
+  flex-direction: column;
+  align-items: center;
+  h3{
+    text-align: center;
+  }
+}
+.fly-class{
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #e3e3e3;
+  margin-top: 8px;
+  input{
+    margin-right: 4px;
+    cursor: pointer;
+  }
+  input:checked + span {
+    background: #fc0;
+  }
+}
+.btn-success{
+  border-radius: 0;
+  margin-right: 4px;
+  cursor: pointer;
+}
+@media all and (max-width: 1024px ){
+  .search-loacation, .date-check, .flight-terms{
+    flex-basis: calc(50% - 3px);
+  }
+  .search-loacation input{
+    border-radius: 0 !important;
+  }
+  #start-search{
+    flex-basis: calc(100% - 4px);
+    border-radius: 0;
+  }
+}
+@media all and (max-width: 435px ) {
+  .search-loacation, .date-check, .flight-terms {
+    flex-basis: calc(100% - 4px);
+  }
+}

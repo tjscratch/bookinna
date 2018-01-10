@@ -1,0 +1,86 @@
+#main-banner{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#home-slogan{
+  text-align: center;
+  padding-top: 2rem;
+  h1{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 2.6rem;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-shadow: 0 1px 1px #778695;
+  }
+  span{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 1.7rem;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-shadow: 0 1px 1px #778695;
+  }
+}
+#main-nav{
+  max-width: 668px;
+  width: 100%;
+  margin: 40px auto;
+  li{
+    flex-basis: calc(25% - 4px);
+    cursor: pointer;
+    margin-left: 2px;
+    background-color: #ffffff;
+    opacity: .5;
+    margin-bottom: 2px;
+    min-width: 135px;
+  }
+  .nav-link{
+    color: #313c48;
+    background: none;
+    padding: 11px 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+
+  }
+  li:first-child{
+    border-radius: 3px 0 0 3px;
+
+  }
+  li:last-child{
+    border-radius: 0 3px 3px 0;
+  }
+  .active{
+    opacity: 1 !important;
+  }
+}
+.benefits-container{
+  display: flex;
+  justify-content: center;
+  opacity: 0.7;
+  background: #FFFFFF;
+  flex-wrap: wrap;
+}
+.benefit-wrapper{
+  text-align: center;
+  padding-bottom: 14px;
+  flex-basis: 400px;
+}
+.container-fluid{
+  padding: 0;
+}
+//@media all and (min-width: 1200px ) {
+//  #home-slogan {
+//    margin-bottom: -15rem;
+//    padding-top: 15rem;
+//  }
+//}
+@media all and (max-width: 414px ) {
+  #main-nav li {
+    flex-basis: calc(50% - 4px);
+    border-radius: 0 !important;
+  }
+  #main-nav li:nth-child(even){
+    margin-right: 2px;
+  }
+}

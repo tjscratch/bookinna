@@ -1,0 +1,50 @@
+#nav-menu{
+  margin: 0 auto;
+  max-width: 1200px;
+}
+#main-nav{
+  background: #303c47 !important;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+.innatour-logo{
+  display: flex;
+  align-items: center;
+}
+.icon-logo{
+  background: url("../../assets/icon-logo.svg") no-repeat;
+  height: 35.1px;
+  width: 230px;
+}
+.nav-link{
+  font-family: Roboto, sans-serif;
+}
+.inna-phone{
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+  color: #EFF2F5;
+}
+.b2b-login{
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  &:hover{
+    color: #fff;
+  }
+}
+.icon-login{
+  background: url("../../assets/icon-login.svg") no-repeat;
+  height: 16px;
+  width: 16px;
+  font-family: Roboto, sans-serif;
+}
+.right-header-content{
+  display: flex;
+  align-items: center;
+}
+.right-header-content span{
+  padding: 0px 10px;
+}
+.close:hover{
+  cursor: pointer;
+}

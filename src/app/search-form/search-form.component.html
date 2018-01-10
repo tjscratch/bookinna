@@ -1,0 +1,89 @@
+<form #serchForm="ngForm" class="" id="searchForm">
+    <div class="search-loacation">
+      <input type="text"
+             class="form-control"
+             value="Москва, Россия"
+             placeholder="Откуда"
+             name="locationFrom"
+             autocomplete="off"
+             value={{currentLocation}}
+             (click)="selectText($event)"
+             (keyup)="searchLocations($event, 'locationFrom')"
+      >
+      <ul *ngIf="searchedLocationsFrom" class="search-autocomplete">
+        <li *ngFor="let location of searchedLocationsFrom" (click)="selectLocation('locationFrom', location.Id, location.Name, location.CountryName)">
+          <span>{{location.Name}}</span>, <span class="country-grey">{{location.CountryName}}</span>
+          <span class="country-grey code-iata">{{location.CodeIata}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="search-loacation">
+      <input type="text"
+             class="form-control"
+             placeholder="Куда"
+             name="locationTo"
+             value={{selectedLocation}}
+             autocomplete="off"
+             (click)="selectText($event)"
+             (keyup)="searchLocations($event, 'locationTo')"
+      >
+      <ul *ngIf="searchedLocationsTo" class="search-autocomplete">
+        <li *ngFor="let location of searchedLocationsTo" (click)="selectLocation('locationTo', location.Id, location.Name, location.CountryName)">
+          <span>{{location.Name}}</span>, <span class="country-grey">{{location.CountryName}}</span>
+          <span class="country-grey code-iata">{{location.CodeIata}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="date-check">
+      <input type="text"
+             class="form-control icon-calendar"
+             readonly
+             required
+             name="daterangeInput"
+             [placeholder]="getCurrentDate()"
+             (selected)="checkdate($event)"
+             daterangepicker
+             [ngModel]="checkDate"
+      >
+    </div>
+    <div class="flight-terms">
+      <input type="text" class="form-control" placeholder="2 человека, эконом" name="flight-terms" (click)="showPeopleCounter()"readonly ngModel>
+      <div class="people-counter" *ngIf="peoleCounter">
+        <h3>Взрослые</h3>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-success">
+            <input type="radio" name="options" id="option1" autocomplete="off"> 1
+          </label>
+          <label class="btn btn-success active">
+            <input type="radio" name="options" id="option2" autocomplete="off" checked> 2
+          </label>
+          <label class="btn btn-success">
+            <input type="radio" name="options" id="option3" autocomplete="off"> 3
+          </label>
+          <label class="btn btn-success">
+            <input type="radio" name="options" id="option4" autocomplete="off"> 4
+          </label>
+        </div>
+        <h3>Дети до 18 лет</h3>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-success active">
+            <input type="radio" name="options" id="option5" autocomplete="off" checked> 0
+          </label>
+          <label class="btn btn-success">
+            <input type="radio" name="options" id="option6" autocomplete="off"> 1
+          </label>
+          <label class="btn btn-success">
+            <input type="radio" name="options" id="option7" autocomplete="off"> 2
+          </label>
+          <label class="btn btn-success">
+            <input type="radio" name="options" id="option8" autocomplete="off"> 3
+          </label>
+        </div>
+        <div class="fly-class">
+            <input  class="" type="checkbox" autocomplete="off"> Бизнес класс
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-success" id="start-search" (click)="startSearch()">Найти</button>
+</form>
+

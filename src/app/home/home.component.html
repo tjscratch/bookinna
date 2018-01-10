@@ -1,0 +1,37 @@
+<div id="main-banner" class="container-fluid" [ngStyle]="{'background': 'url(' + bannerUrl + ') center/cover no-repeat'}">
+  <div id="home-slogan" class="container">
+    <h1 class="text-uppercase">ПОИСК ТУРОВ НА РЕГУЛЯРНЫХ РЕЙСА</h1>
+    <span class="">АВИАБИЛЕТ + ОТЕЛЬ = ВМЕСТЕ ВЫГОДНЕЙ</span>
+  </div>
+  <div>
+    <ul id="main-nav" class="nav nav-pills nav-fill">
+      <li class="nav-item" routerLink="/packages" [routerLinkActive]="'active'">
+        <a class="nav-link active">Перелет + Отель</a>
+      </li>
+      <li class="nav-item" routerLink="/avia" [routerLinkActive]="'active'">
+        <a class="nav-link">Авиабилеты</a>
+      </li>
+      <li class="nav-item" routerLink="hotels" [routerLinkActive]="'active'">
+        <a class="nav-link">Отели</a>
+      </li>
+      <li class="nav-item" routerLink="tours" [routerLinkActive]="'active'">
+        <a class="nav-link">Туры</a>
+      </li>
+    </ul>
+    <app-search-form></app-search-form>
+  </div>
+    <div class="benefits-container container-fluid">
+      <div class="benefit-wrapper">
+        <h2>ВЫГОДА</h2>
+        <span class="dp-benefits">Экономия до 30% за счет<br /> пециальных пакетных цен.<br /> Страховка в подарок</span>
+      </div>
+      <div class="benefit-wrapper">
+        <h2>СВОБОДА</h2>
+        <span class="dp-benefits">200 стран 670 000 отелей <br />500 авиакомпаний. <br />Сам себе турагент</span>
+      </div>
+      <div class="benefit-wrapper">
+        <h2>НАДЕЖНОСТЬ</h2>
+        <span class="dp-benefits">Перелет на регулярных рейсах. <br />Моментальная оплата поставщикам.<br /> Гарантия поездки</span>
+      </div>
+  </div>
+</div>
