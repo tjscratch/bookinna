@@ -35,7 +35,7 @@
       </div>
   </div>
 </div>
-<div class="container offers-contaner">
+<div class="offers-contaner">
   <li *ngFor="let offer of offers" [ngStyle]="{'background': 'url(' + offer.Image + ') center/cover no-repeat'}" [ngClass]="offer.TypeName === 'XL' ? 'best-offers large' : 'best-offers middle'">
     <h1>{{ offer.BackTitleRow1}}</h1>
     <h1>{{ offer.BackTitleRow2}}</h1>
