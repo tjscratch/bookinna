@@ -13,7 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { BestoffersComponent } from './bestoffers/bestoffers.component';
 import { FooterComponent } from './footer/footer.component';
-import { SearchFormComponent } from './search-form/search-form.component';
+import { SearchFormComponent } from './packages-search-form/packages-search-form.component';
 import { PackageSearchComponent } from './package-search/package-search.component';
 import { AviaComponent } from './avia/avia.component';
 

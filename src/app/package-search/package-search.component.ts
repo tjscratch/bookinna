@@ -1,4 +1,4 @@
-import { Component, OnInit, Directive } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../data.service';
 
 
@@ -9,6 +9,9 @@ import { DataService } from '../data.service';
 
 })
 export class PackageSearchComponent implements OnInit {
+
+  showForm = false;
+
 
   constructor(private _DataService: DataService) { }
 

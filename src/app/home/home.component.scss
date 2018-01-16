@@ -69,12 +69,29 @@
 .container-fluid{
   padding: 0;
 }
-//@media all and (min-width: 1200px ) {
-//  #home-slogan {
-//    margin-bottom: -15rem;
-//    padding-top: 15rem;
-//  }
-//}
+.best-offers{
+  list-style: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+.middle{
+  flex-basis: 50%;
+  max-width: 598px;
+  height: 320px;
+}
+.middle:nth-child(odd){
+  margin-right: 4px;
+}
+.large{
+  flex-basis: 100%;
+  height: 428px;
+}
+.best-offers:hover {
+  opacity: .75;
+  filter: alpha(opacity=75);
+  transition: all 1s;
+  -webkit-transition: all 1s;
+}
 @media all and (max-width: 414px ) {
   #main-nav li {
     flex-basis: calc(50% - 4px);

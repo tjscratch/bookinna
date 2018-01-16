@@ -36,7 +36,7 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  GetMainBanner() {
+  GetBanners() {
     return this.http.get(this.hostname + this.API_URLS.SectionGet + '/4');
   }
   GetCurrentLocation() {

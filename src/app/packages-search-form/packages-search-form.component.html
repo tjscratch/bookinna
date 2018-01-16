@@ -1,14 +1,13 @@
-<form #serchForm="ngForm" class="" id="searchForm">
+<form #serchForm="ngForm" class="" id="searchForm" *ngIf="showForm">
     <div class="search-loacation">
       <input type="text"
+             #locationFrom
              class="form-control"
-             value="Москва, Россия"
              placeholder="Откуда"
-             name="locationFrom"
              autocomplete="off"
-             value={{currentLocation}}
+             value="{{currentLocation}}"
              (click)="selectText($event)"
-             (keyup)="searchLocations($event, 'locationFrom')"
+             (keyup)="searchLocations(locationFrom.value, 'locationFrom')"
       >
       <ul *ngIf="searchedLocationsFrom" class="search-autocomplete">
         <li *ngFor="let location of searchedLocationsFrom" (click)="selectLocation('locationFrom', location.Id, location.Name, location.CountryName)">
@@ -19,13 +18,13 @@
     </div>
     <div class="search-loacation">
       <input type="text"
+             #locationTo
              class="form-control"
              placeholder="Куда"
-             name="locationTo"
-             value={{selectedLocation}}
+             value="{{selectedLocation}}"
              autocomplete="off"
              (click)="selectText($event)"
-             (keyup)="searchLocations($event, 'locationTo')"
+             (keyup)="searchLocations(locationTo.value, 'locationTo')"
       >
       <ul *ngIf="searchedLocationsTo" class="search-autocomplete">
         <li *ngFor="let location of searchedLocationsTo" (click)="selectLocation('locationTo', location.Id, location.Name, location.CountryName)">
@@ -43,7 +42,7 @@
              [placeholder]="getCurrentDate()"
              (selected)="checkdate($event)"
              daterangepicker
-             [ngModel]="checkDate"
+             value={{checkDate}}
       >
     </div>
     <div class="flight-terms">

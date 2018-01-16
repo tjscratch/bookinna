@@ -3,16 +3,17 @@ import { DaterangepickerConfig } from 'ng2-daterangepicker';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 
-import $ from 'jquery';
+import * as  $ from 'jquery';
 
 @Component({
-  selector: 'app-search-form',
-  templateUrl: './search-form.component.html',
-  styleUrls: ['./search-form.component.scss']
+  selector: 'app-packages-search-form',
+  templateUrl: './packages-search-form.component.html',
+  styleUrls: ['./packages-search-form.component.scss']
 })
 
 export class SearchFormComponent implements OnInit {
-  checkDate: any;
+  public showForm = true;
+  public checkDate: any;
   months = ['ян', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
   weekDay = [ 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
   currentLocation: any;
@@ -33,10 +34,9 @@ export class SearchFormComponent implements OnInit {
   selectText (event) {
     event.target.select();
   }
-  searchLocations(event, input) {
-    console.log(this.locationTo);
-    if (event.target.value.length >= 3) {
-      const term = event.target.value;
+  searchLocations(value, input) {
+    if (value.length >= 3) {
+      const term = value;
       this._DataService.GetInputedLocations(term).subscribe(data => {
         if (input === 'locationFrom') {
           this.searchedLocationsFrom = data;
@@ -135,6 +135,3 @@ export class SearchFormComponent implements OnInit {
     });
   }
 }
-$(document).ready(function () {
-  $('.daterangepicker_input').css('display', 'none');
-});

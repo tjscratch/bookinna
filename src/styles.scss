@@ -1,4 +1,4 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body{
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -7,4 +7,13 @@ body{
 }
 #wrapper{
   margin-bottom: 5rem;
+}
+.daterangepicker_input{
+  display: none;
+}
+.daterangepicker td{
+ padding: .6rem;
+}
+.daterangepicker td.active {
+  background-color: #89c13a !important;
 }
