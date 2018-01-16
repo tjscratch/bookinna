@@ -8,12 +8,9 @@ body{
 #wrapper{
   margin-bottom: 5rem;
 }
-.daterangepicker_input{
-  display: none;
-}
-.daterangepicker td{
- padding: .6rem;
-}
-.daterangepicker td.active {
-  background-color: #89c13a !important;
-}
+@media all and (min-width: 1600px ){;
+    bs-daterangepicker-container {
+      top: 380px !important;
+      left: 706px !important;
+    }
+  }

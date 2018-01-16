@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { DaterangepickerConfig } from 'ng2-daterangepicker';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 
-import * as  $ from 'jquery';
+import { BsDatepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/bs-moment';
+import { ru } from 'ngx-bootstrap/locale';
+defineLocale('ru', ru);
 
 @Component({
   selector: 'app-packages-search-form',
   templateUrl: './packages-search-form.component.html',
   styleUrls: ['./packages-search-form.component.scss']
 })
-
 export class SearchFormComponent implements OnInit {
   public showForm = true;
   public checkDate: any;
@@ -20,7 +21,7 @@ export class SearchFormComponent implements OnInit {
   // Параметры для поиска
   locationFromId: any;
   locationToId: any;
-  checkDate_formated: any;
+  UrlDate: any;
   StartVoyageDate: any;
   EndVoyageDate: any;
   // Параметры для поиска
@@ -30,6 +31,8 @@ export class SearchFormComponent implements OnInit {
   searchedLocationsFrom: any;
   selectedLocation: any;
   peoleCounter = false;
+  options: BsDatepickerConfig;
+  locale = 'ru';
 
   selectText (event) {
     event.target.select();
@@ -64,23 +67,21 @@ export class SearchFormComponent implements OnInit {
     return `${currentDate} \u2013 ${inWeek}`;
 }
   checkdate(val) {
-    const dateFrom_fomated = val.start;
-    const dateTo_fomated = val.end;
-    const dateFrom = val.start._d;
-    const dateTo = val.end._d;
+    const dateFrom = val[0];
+    const dateTo = val[1];
     const startDate = `${dateFrom.getDate()} ${this.months[dateFrom.getMonth()]}, ${this.weekDay[dateFrom.getDay()]}`;
     const endDate = `${dateTo.getDate()} ${this.months[dateTo.getMonth()]}, ${this.weekDay[dateTo.getDay()]}`;
-    this.checkDate_formated = `${dateFrom_fomated.format('DD.MM.YYYY')}-${dateTo_fomated.format('DD.MM.YYYY')}`;
     this.checkDate = `${startDate} \u2013 ${endDate}`;
-    this.StartVoyageDate = dateFrom_fomated.format('YYYY-MM-DD');
-    this.EndVoyageDate = dateTo_fomated.format('YYYY-MM-DD');
+    this.StartVoyageDate = `${dateFrom.getFullYear()}-0${dateFrom.getMonth()}-${dateFrom.getDate()}`;
+    this.EndVoyageDate = `${dateTo.getFullYear()}-0${dateTo.getMonth()}-${dateTo.getDate()}`;
+    this.UrlDate = `${dateFrom.getDate()}.0${dateFrom.getMonth()}.${dateFrom.getFullYear()}-
+    ${dateTo.getDate()}.0${dateTo.getMonth()}.${dateTo.getFullYear()}`;
   }
   showPeopleCounter() {
     this.peoleCounter = ! this.peoleCounter;
   }
   startSearch() {
-    const searchUrl = `${this.locationFromId}-${this.locationToId}-${this.checkDate_formated}-0-2-`;
-    console.log(searchUrl);
+    const searchUrl = `${this.locationFromId}-${this.locationToId}-${this.UrlDate}-0-2-`;
     const searchParams = `Adult=2&ArrivalId=${this.locationToId}&DepartureId=${this.locationFromId}
       &EndVoyageDate=${this.EndVoyageDate}&StartVoyageDate=${this.StartVoyageDate}&TicketClass=0`;
     this.router.navigate(['packages/search', searchUrl]);
@@ -91,43 +92,9 @@ export class SearchFormComponent implements OnInit {
       console.log(data);
     });
   }
-  constructor(private daterangepickerOptions: DaterangepickerConfig, private router: Router, private _DataService: DataService) {
-    this.daterangepickerOptions.settings = {
-      'autoApply': true,
-      autoUpdateInput: false,
-      'minDate': new Date(),
-      'dateLimit': 28,
-      locale: {
-        format: 'DD.MM.YYYY',
-        'separator': ' - ',
-        'daysOfWeek': [
-          'Вс',
-          'Пн',
-          'Вт',
-          'Ср',
-          'Чт',
-          'Пт',
-          'Сб'
-        ],
-        'monthNames': [
-          'Январь',
-          'Февраль',
-          'Март',
-          'Апрель',
-          'Май',
-          'Июнь',
-          'Июль',
-          'Август',
-          'Сентябрь',
-          'Октябрь',
-          'Ноябрь',
-          'Декабррь'
-        ],
-        'firstDay': 1
-      },
-    };
+  constructor(private _localeService: BsLocaleService, private router: Router, private _DataService: DataService) {
+    this._localeService.use(this.locale);
   }
-
   ngOnInit() {
     this._DataService.GetCurrentLocation().subscribe(data => {
       this.currentLocation = `${data['Name']}, ${data['CountryName']}`;

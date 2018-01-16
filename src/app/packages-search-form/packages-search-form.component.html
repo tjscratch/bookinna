@@ -4,6 +4,7 @@
              #locationFrom
              class="form-control"
              placeholder="Откуда"
+
              autocomplete="off"
              value="{{currentLocation}}"
              (click)="selectText($event)"
@@ -36,14 +37,23 @@
     <div class="date-check">
       <input type="text"
              class="form-control icon-calendar"
-             readonly
-             required
              name="daterangeInput"
+             bsDaterangepicker
              [placeholder]="getCurrentDate()"
-             (selected)="checkdate($event)"
-             daterangepicker
+             (bsValueChange)="checkdate($event)"
              value={{checkDate}}
+             readonly
       >
+      <!--<input type="text"-->
+             <!--class="form-control icon-calendar"-->
+             <!--readonly-->
+             <!--required-->
+             <!--name="daterangeInput"-->
+             <!--[placeholder]="getCurrentDate()"-->
+             <!--(selected)="checkdate($event)"-->
+             <!--daterangepicker-->
+             <!--value={{checkDate}}-->
+      <!--&gt;-->
     </div>
     <div class="flight-terms">
       <input type="text" class="form-control" placeholder="2 человека, эконом" name="flight-terms" (click)="showPeopleCounter()"readonly ngModel>

@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { Daterangepicker } from 'ng2-daterangepicker';
 
+import { BsDatepickerModule } from 'ngx-bootstrap';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -36,7 +38,8 @@ import { AviaComponent } from './avia/avia.component';
     HttpClientModule,
     FormsModule,
     MaterialModule,
-    Daterangepicker
+    Daterangepicker,
+    BsDatepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
