@@ -80,16 +80,16 @@
   text-decoration: none;
   border-radius: 4px;
   padding: 16px;
+  margin: 2px;
 }
 .middle{
   height: 320px;
   flex-basis: calc(50% - 4px);
-  margin: 2px;
 }
 .large{
   height: 428px;
   flex-basis: 100%;
-  margin: 2px;
+
 }
 .best-offers:hover {
   opacity: .75;
