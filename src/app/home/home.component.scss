@@ -106,4 +106,7 @@
   #main-nav li:nth-child(even){
     margin-right: 2px;
   }
+  .middle{
+    flex-basis: calc(100% - 4px);
+  }
 }
