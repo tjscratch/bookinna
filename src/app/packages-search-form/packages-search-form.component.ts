@@ -69,21 +69,23 @@ export class SearchFormComponent implements OnInit {
   checkdate(val) {
     const dateFrom = val[0];
     const dateTo = val[1];
-    const startDate = `${dateFrom.getDate()} ${this.months[dateFrom.getMonth()]}, ${this.weekDay[dateFrom.getDay()]}`;
-    const endDate = `${dateTo.getDate()} ${this.months[dateTo.getMonth()]}, ${this.weekDay[dateTo.getDay()]}`;
+    const dayFrom = (dateFrom.getDate() < 10) ? `0${dateFrom.getDate()}` : `${dateFrom.getDate()}`;
+    const dayTo = (dateTo.getDate() < 10) ? `0${dateTo.getDate()}` : `${dateTo.getDate()}`;
+    const monthFrom = (dateFrom.getMonth() + 1 < 10) ? `0${dateFrom.getMonth() + 1}` : `${dateFrom.getMonth() + 1}`;
+    const monthTo = (dateTo.getMonth() + 1 < 10) ? `0${dateTo.getMonth() + 1}` : `${dateTo.getMonth() + 1}`;
+    const startDate = `${dayFrom} ${this.months[dateFrom.getMonth()]}, ${this.weekDay[dateFrom.getDay()]}`;
+    const endDate = `${dayTo} ${this.months[dateTo.getMonth()]}, ${this.weekDay[dateTo.getDay()]}`;
     this.checkDate = `${startDate} \u2013 ${endDate}`;
-    this.StartVoyageDate = `${dateFrom.getFullYear()}-0${dateFrom.getMonth()}-${dateFrom.getDate()}`;
-    this.EndVoyageDate = `${dateTo.getFullYear()}-0${dateTo.getMonth()}-${dateTo.getDate()}`;
-    this.UrlDate = `${dateFrom.getDate()}.0${dateFrom.getMonth()}.${dateFrom.getFullYear()}-
-    ${dateTo.getDate()}.0${dateTo.getMonth()}.${dateTo.getFullYear()}`;
+    this.StartVoyageDate = `${dateFrom.getFullYear()}-${monthFrom}-${dayFrom}`;
+    this.EndVoyageDate = `${dateTo.getFullYear()}-${monthTo}-${dayTo}`;
+    this.UrlDate = `${dayFrom}.${monthFrom}.${dateFrom.getFullYear()}-${dayTo}.${monthTo}.${dateTo.getFullYear()}`;
   }
   showPeopleCounter() {
     this.peoleCounter = ! this.peoleCounter;
   }
   startSearch() {
     const searchUrl = `${this.locationFromId}-${this.locationToId}-${this.UrlDate}-0-2-`;
-    const searchParams = `Adult=2&ArrivalId=${this.locationToId}&DepartureId=${this.locationFromId}
-      &EndVoyageDate=${this.EndVoyageDate}&StartVoyageDate=${this.StartVoyageDate}&TicketClass=0`;
+    const searchParams = `Adult=2&ArrivalId=${this.locationToId}&DepartureId=${this.locationFromId}&EndVoyageDate=${this.EndVoyageDate}&StartVoyageDate=${this.StartVoyageDate}&TicketClass=0`;
     this.router.navigate(['packages/search', searchUrl]);
     this._DataService.getPackagesAvia(searchParams).subscribe(data => {
       console.log(data);
