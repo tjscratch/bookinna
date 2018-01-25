@@ -7,8 +7,18 @@ import { AviaComponent } from './avia/avia.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/packages', pathMatch: 'full' },
-  { path: 'packages', component: HomeComponent, pathMatch: 'full' },
-  { path: 'packages/search/:searchParams', component: PackageSearchComponent, pathMatch: 'full' },
+  { path: 'packages',
+    children: [
+      {
+        path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'search/:searchParams',
+        component: PackageSearchComponent
+      }
+    ]
+  },
   { path: 'avia', component: AviaComponent },
 ];
 
